@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Grupo Enlace</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <link rel="stylesheet" type="text/css"
+          href="/resources/theme/css/bootstrap.min.css" />
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Grupo enlace</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#acercaDe">Acerca de</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+
+    <div class="starter-template">
+        <h1>Bienvenido a Grupo Enlace</h1>
+        <hr>
+        <h2>Seleccione su usuario</h2>
+
+        <tr th:each="User : ${UsersGrupoEnlace}">
+            <div>
+                <td><span th:text="${User.id}"></span></td>
+                <td><a href="#" th:text="${User.name}">Name</a></td>
+            </div>
+        </tr>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<script type="text/javascript"
+        src="/resources/theme/js/bootstrap.min.js"></script>
+
+</body>
+</html>
