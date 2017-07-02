@@ -10,9 +10,18 @@ import java.util.List;
 public class WelcomeFormData {
 
     List<User> users;
+    int selectedUserId;
 
     public List<User> getUsers() {
         return users;
+    }
+
+    public int getSelectedUserId() {
+        return selectedUserId;
+    }
+
+    public void setSelectedUserId(int selectedUserId) {
+        this.selectedUserId = selectedUserId;
     }
 
     public void setUsers(List<User> users) {

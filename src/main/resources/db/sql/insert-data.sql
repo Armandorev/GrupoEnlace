@@ -4,3 +4,57 @@ INSERT INTO USERS_GRUPO_ENLACE VALUES
 (3, 'US','Sara', 'sara@alvaro.com'),
 (4, 'US','Vero', 'vero@alvaro.com'),
 (5, 'US','Armando', 'armando@alvaro.com');
+
+INSERT INTO TASKS_GRUPO_ENLACE VALUES
+(1, '01',1, 'TAREA 1','LA TAREA 1'),
+(2, '01',1, 'TAREA 2','LA TAREA 2'),
+(3, '01',1, 'TAREA 3','LA TAREA 3'),
+(4, '01',1, 'TAREA 4','LA TAREA 4'),
+(5, '01',1, 'TAREA 5','LA TAREA 5'),
+(6, '01',1, 'TAREA 6','LA TAREA 6'),
+(7, '01',1, 'TAREA 7','LA TAREA 7'),
+(8, '01',1, 'TAREA 8','LA TAREA 8'),
+(9, '01',1, 'TAREA 9','LA TAREA 9'),
+(10, '02',1, 'TAREA 10','LA TAREA 10'),
+(11, '02',1, 'TAREA 11','LA TAREA 11'),
+(12, '02',1, 'TAREA 12','LA TAREA 12'),
+(13, '02',1, 'TAREA 13','LA TAREA 13'),
+(14, '02',1, 'TAREA 14','LA TAREA 14'),
+(15, '02',1, 'TAREA 15','LA TAREA 15'),
+(16, '02',1, 'TAREA 16','LA TAREA 16'),
+(17, '02',1, 'TAREA 17','LA TAREA 17'),
+(18, '02',1, 'TAREA 18','LA TAREA 18'),
+(19, '01',1, 'TAREA 19','LA TAREA 19'),
+(20, '01',1, 'TAREA 20','LA TAREA 20'),
+(21, '01',1, 'TAREA 21','LA TAREA 21'),
+(22, '01',1, 'TAREA 22','LA TAREA 22');
+
+CREATE TABLE TASKS_USUARIOS (
+ID_TAREA INTEGER PRIMARY KEY,
+ID_USUARIO INTEGER PRIMARY KEY
+);
+INSERT INTO TASKS_USUARIOS VALUES
+(1,4),
+(2,2),
+(3,3),
+(4,4),
+(5,5),
+(6,4),
+(7,2),
+(8,3),
+(9,4),
+(10,5),
+(11,4),
+(11,2),
+(12,3),
+(13,4),
+(14,5),
+(14,3),
+(15,2),
+(16,3),
+(17,4),
+(18,5),
+(19,2),
+(20,3),
+(21,4),
+(22,5);

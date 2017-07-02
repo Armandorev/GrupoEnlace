@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -25,16 +27,31 @@ public class WelcomeController {
 
     WelcomeFormData welcomeFormData;
 
-    @RequestMapping(value = "/", method = RequestMethod.GET)
+    @RequestMapping(value = {"/welcome","/"}, method = RequestMethod.GET)
     public ModelAndView welcome() {
         welcomeFormData = new WelcomeFormData();
         logger.debug("access to welcome page");
 
         welcomeFormData.setUsers(persistenceService.getAllUsers());
         ModelAndView modelAndView = new ModelAndView("welcome");
-        modelAndView.addObject("UsersGrupoEnlace",welcomeFormData.getUsers());
+        modelAndView.addObject("formData",welcomeFormData);
 
         return modelAndView;
 
+    }
+    @RequestMapping(value = "/welcome", method = RequestMethod.POST)
+    public ModelAndView handlePost(@ModelAttribute WelcomeFormData formData, Model model) {
+        logger.debug("access to welcome page via POST");
+
+        int selectedUserId = formData.getSelectedUserId();
+
+        if (selectedUserId >0) {
+            return new ModelAndView("redirect:/tareas?usuario="+selectedUserId);
+        }
+        else{
+            ModelAndView modelAndView = new ModelAndView("welcome");
+            modelAndView.addObject("formData",welcomeFormData);
+            return modelAndView;
+        }
     }
 }
