@@ -1,5 +1,7 @@
 package com.alvaro.grupoEnlace.data.persistence.persistors;
 
+import com.alvaro.grupoEnlace.data.persistence.tables.tasks.TasksGrupoEnlace;
+import com.alvaro.grupoEnlace.entities.Tarea;
 import com.alvaro.grupoEnlace.entities.User;
 import com.alvaro.grupoEnlace.data.persistence.ApplicationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,4 +28,9 @@ public class PersistenceService {
     public List<User> getAllUsers() {
         return applicationRepository.getAllUsers();
     }
+    public List<TasksGrupoEnlace> getTareasByUserId(int id)
+    {
+        return applicationRepository.getTareasByUserId(id);
+    }
+    public TasksGrupoEnlace getTareaById(int id) {return applicationRepository.getTareaById(id);}
 }

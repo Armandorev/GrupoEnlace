@@ -26,21 +26,21 @@
 
 <div class="container" th:object="${formData}">
         <br class="starter-template">
-            <h1 th:text="'Bienvenido/a '+ *{usuario.name}"></h1>
+            <h1 th:text="'Tarea : '+ *{tarea.title}"></h1>
             <br>
-            <h2>Tus tareas</h2>
         <br>
         <hr>
-        <th:block th:each="tarea: *{tareas}">
-            <a th:href="'/tarea?tarea='+${tarea.id}+'&user='+*{usuario.id}"><p th:text="${tarea.title}"></p></a>
+        <th:block >
 
-            <span th:text="${tarea.creator}">Text</span>
-            <span th:text="${tarea.description}">Text</span>
+
+            <span th:text="'Tarea Creada por : ' + *{userName}">Text</span>
+            <br>
+            <span th:text="'Descripcion : ' + *{tarea.description}">Text</span>
             <hr>
-        </th:block>
-    <hr>
-    <a href="/welcome">Volver a seleccion de usuario</a>
+            <hr>
+            <a th:href="'/tareas?usuario=' + *{userId}">Volver a mis tareas</a>
 
+        </th:block>
 
 </div>
 <!-- /.container -->

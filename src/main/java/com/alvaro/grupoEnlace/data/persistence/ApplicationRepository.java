@@ -1,6 +1,11 @@
 package com.alvaro.grupoEnlace.data.persistence;
 
+import com.alvaro.grupoEnlace.data.persistence.tables.taskUsers.TasksUsers;
+import com.alvaro.grupoEnlace.data.persistence.tables.taskUsers.TasksUsersDbRepository;
+import com.alvaro.grupoEnlace.data.persistence.tables.tasks.TasksDbRepository;
+import com.alvaro.grupoEnlace.data.persistence.tables.tasks.TasksGrupoEnlace;
 import com.alvaro.grupoEnlace.data.persistence.tables.users.UsersGrupoEnlace;
+import com.alvaro.grupoEnlace.entities.Tarea;
 import com.alvaro.grupoEnlace.entities.User;
 import com.alvaro.grupoEnlace.data.persistence.tables.users.UsersDbRepository;
 import org.slf4j.Logger;
@@ -20,6 +25,12 @@ public class ApplicationRepository {
 
     @Autowired
     private UsersDbRepository usersDbReposiory;
+
+    @Autowired
+    private TasksDbRepository tasksDbRepository;
+
+    @Autowired
+    private TasksUsersDbRepository tasksUsersDbRepository;
 
     public User getUsersById(int id) {
         UsersGrupoEnlace userById = this.usersDbReposiory.findById(id);
@@ -44,4 +55,16 @@ public class ApplicationRepository {
         return usersToReturn;
     }
 
+    public List<TasksGrupoEnlace> getTareasByUserId(int id) {
+        List<TasksUsers> listaTareas = this.tasksUsersDbRepository.findAllByIdUsuario(id);
+        List<Integer> listaIds = new ArrayList<>();
+        listaTareas.forEach( (tasksUsers) -> listaIds.add(tasksUsers.getIdTarea()) );
+        List<TasksGrupoEnlace> tareasDetalle = new ArrayList<>();
+        listaIds.forEach( (idTarea) -> tareasDetalle.add(this.tasksDbRepository.findById(idTarea)) );
+        return tareasDetalle;
+    }
+
+    public TasksGrupoEnlace getTareaById(int id) {
+        return this.tasksDbRepository.findById(id);
+    }
 }
